@@ -2,19 +2,24 @@
   // 1) What is the purpose of the 'this keyword'?
 
       //Answer
-
+      //to referance somthing within the context of a certian block of code without using a completely unique identifyer
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
-
+ // bind
+ // call
+ // new
+ // apply
   // 3) What is the difference between call and apply?
-
+//  var.call(context, argument) // var.call(context, [argument,argument])
+//
       //Answer
+
 
   // 4) What does .bind do?
 
       //Answer
-
+//binds a function to a context
 
 //Next Problem
 
@@ -24,9 +29,16 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
-
+var user = {
+  username: "Marcus ",
+  email: "marcus@userplight.com",
+  getUsername: function(){
+    return this.username
+  }
+}
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
+user.getUsername();
 
 //Next Problem
 
@@ -37,6 +49,19 @@
 
 var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
+
+function Car(make, model, year){
+    this.type = make;
+    this.model = model;
+    this. year = year;
+    this.move = 0;
+    this.moveCar = function(){
+      this.move += 10;
+      return this.move
+    }
+
+}
+
 
 prius.moveCar(); //increments prius' move property by 10. Returns the new move property.
 mustang.moveCar(); //increments mustang' move property by 10. Returns the new move property.
@@ -66,7 +91,7 @@ var myUser = {
 };
 
 var getMyUsername = function() {
- return this.username;
+ return myUser.username;
 };
 
 var userName = getMyUsername(); //Fix this
